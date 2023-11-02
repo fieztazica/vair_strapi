@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "boughts",
+  "info": {
+    "singularName": "bought",
+    "pluralName": "boughts",
+    "displayName": "Bought",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "total": {
+      "type": "float"
+    },
+    "comment": {
+      "type": "text"
+    },
+    "recommend": {
+      "type": "boolean"
+    },
+    "bought_date": {
+      "type": "datetime"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "feedback": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::feedback.feedback",
+      "mappedBy": "bought"
+    }
+  }
+}
