@@ -65,6 +65,12 @@
       "target": "plugin::users-permissions.role",
       "inversedBy": "users",
       "configurable": false
+    },
+    "library": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::library.library",
+      "mappedBy": "users_permissions_user"
     }
   }
 }
