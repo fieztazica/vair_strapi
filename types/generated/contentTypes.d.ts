@@ -682,6 +682,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
             'manyToOne',
             'plugin::users-permissions.role'
         >
+        products: Attribute.Relation<
+            'plugin::users-permissions.user',
+            'oneToMany',
+            'api::product.product'
+        >
         createdAt: Attribute.DateTime
         updatedAt: Attribute.DateTime
         createdBy: Attribute.Relation<
@@ -705,7 +710,7 @@ export interface ApiBoughtBought extends Schema.CollectionType {
         singularName: 'bought'
         pluralName: 'boughts'
         displayName: 'Bought'
-        description: ''
+        description: 'Bought Products'
     }
     options: {
         draftAndPublish: true
@@ -715,11 +720,6 @@ export interface ApiBoughtBought extends Schema.CollectionType {
         comment: Attribute.Text
         recommend: Attribute.Boolean
         bought_date: Attribute.DateTime
-        product: Attribute.Relation<
-            'api::bought.bought',
-            'oneToOne',
-            'api::product.product'
-        >
         users_permissions_user: Attribute.Relation<
             'api::bought.bought',
             'oneToOne',
@@ -729,6 +729,11 @@ export interface ApiBoughtBought extends Schema.CollectionType {
             'api::bought.bought',
             'oneToOne',
             'api::feedback.feedback'
+        >
+        product: Attribute.Relation<
+            'api::bought.bought',
+            'manyToOne',
+            'api::product.product'
         >
         createdAt: Attribute.DateTime
         updatedAt: Attribute.DateTime
@@ -794,11 +799,6 @@ export interface ApiDeveloperDeveloper extends Schema.CollectionType {
     attributes: {
         name: Attribute.String & Attribute.Required
         email: Attribute.Email & Attribute.Required & Attribute.Unique
-        products: Attribute.Relation<
-            'api::developer.developer',
-            'oneToMany',
-            'api::product.product'
-        >
         createdAt: Attribute.DateTime
         updatedAt: Attribute.DateTime
         publishedAt: Attribute.DateTime
@@ -841,11 +841,6 @@ export interface ApiFeedbackFeedback extends Schema.CollectionType {
             'oneToOne',
             'api::bought.bought'
         >
-        product: Attribute.Relation<
-            'api::feedback.feedback',
-            'oneToOne',
-            'api::product.product'
-        >
         createdAt: Attribute.DateTime
         updatedAt: Attribute.DateTime
         publishedAt: Attribute.DateTime
@@ -878,25 +873,18 @@ export interface ApiProductProduct extends Schema.CollectionType {
     attributes: {
         name: Attribute.String & Attribute.Required
         description: Attribute.Text
-        price: Attribute.Float & Attribute.Required
-        logo: Attribute.Media
+        price: Attribute.Float & Attribute.Required & Attribute.DefaultTo<0>
         banners: Attribute.Media
-        developer: Attribute.Relation<
-            'api::product.product',
-            'oneToOne',
-            'api::developer.developer'
-        > &
-            Attribute.Required
-        publisher: Attribute.Relation<
-            'api::product.product',
-            'oneToOne',
-            'api::publisher.publisher'
-        > &
-            Attribute.Required
-        categories: Attribute.Relation<
+        logo: Attribute.Media
+        boughts: Attribute.Relation<
             'api::product.product',
             'oneToMany',
-            'api::category.category'
+            'api::bought.bought'
+        >
+        developer_user: Attribute.Relation<
+            'api::product.product',
+            'manyToOne',
+            'plugin::users-permissions.user'
         >
         createdAt: Attribute.DateTime
         updatedAt: Attribute.DateTime
@@ -930,11 +918,6 @@ export interface ApiPublisherPublisher extends Schema.CollectionType {
     attributes: {
         name: Attribute.String & Attribute.Required
         email: Attribute.Email & Attribute.Required & Attribute.Unique
-        products: Attribute.Relation<
-            'api::publisher.publisher',
-            'oneToMany',
-            'api::product.product'
-        >
         createdAt: Attribute.DateTime
         updatedAt: Attribute.DateTime
         publishedAt: Attribute.DateTime

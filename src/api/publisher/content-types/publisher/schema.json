@@ -20,11 +20,6 @@
       "type": "email",
       "unique": true,
       "required": true
-    },
-    "products": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::product.product"
     }
   }
 }

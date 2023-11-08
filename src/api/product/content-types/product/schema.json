@@ -21,15 +21,8 @@
     },
     "price": {
       "type": "float",
-      "required": true
-    },
-    "logo": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "required": true,
+      "default": 0
     },
     "banners": {
       "type": "media",
@@ -37,25 +30,33 @@
       "required": false,
       "allowedTypes": [
         "images",
-        "videos"
+        "files",
+        "videos",
+        "audios"
       ]
     },
-    "developer": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::developer.developer",
-      "required": true
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
-    "publisher": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::publisher.publisher",
-      "required": true
-    },
-    "categories": {
+    "boughts": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::category.category"
+      "target": "api::bought.bought",
+      "mappedBy": "product"
+    },
+    "developer_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "products"
     }
   }
 }

@@ -5,7 +5,7 @@
     "singularName": "bought",
     "pluralName": "boughts",
     "displayName": "Bought",
-    "description": ""
+    "description": "Bought Products"
   },
   "options": {
     "draftAndPublish": true
@@ -24,11 +24,6 @@
     "bought_date": {
       "type": "datetime"
     },
-    "product": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::product.product"
-    },
     "users_permissions_user": {
       "type": "relation",
       "relation": "oneToOne",
@@ -39,6 +34,12 @@
       "relation": "oneToOne",
       "target": "api::feedback.feedback",
       "mappedBy": "bought"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "boughts"
     }
   }
 }
