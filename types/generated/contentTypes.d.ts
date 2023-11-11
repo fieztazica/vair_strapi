@@ -653,7 +653,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     }
     options: {
         draftAndPublish: false
-        timestamps: true
     }
     attributes: {
         username: Attribute.String &
@@ -681,11 +680,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
             'plugin::users-permissions.user',
             'manyToOne',
             'plugin::users-permissions.role'
-        >
-        products: Attribute.Relation<
-            'plugin::users-permissions.user',
-            'oneToMany',
-            'api::product.product'
         >
         createdAt: Attribute.DateTime
         updatedAt: Attribute.DateTime
@@ -881,9 +875,9 @@ export interface ApiProductProduct extends Schema.CollectionType {
             'oneToMany',
             'api::bought.bought'
         >
-        developer_user: Attribute.Relation<
+        users_permissions_user: Attribute.Relation<
             'api::product.product',
-            'manyToOne',
+            'oneToOne',
             'plugin::users-permissions.user'
         >
         createdAt: Attribute.DateTime

@@ -52,11 +52,10 @@
       "target": "api::bought.bought",
       "mappedBy": "product"
     },
-    "developer_user": {
+    "users_permissions_user": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "products"
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     }
   }
 }
