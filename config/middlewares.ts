@@ -4,7 +4,24 @@ export default [
     {
         name: 'strapi::cors',
         config: {
-            headers: ['Strapi-Transformer-Ignore'],
+            origin: ['localhost:1337', 'strapi.vair.nyte.tk', 'vair.nyte.tk'],
+            methods: [
+                'GET',
+                'POST',
+                'PUT',
+                'PATCH',
+                'DELETE',
+                'HEAD',
+                'OPTIONS',
+            ],
+            headers: [
+                'Strapi-Transformer-Ignore',
+                'Content-Type',
+                'Authorization',
+                'Origin',
+                'Accept',
+            ],
+            keepHeaderOnError: true,
         },
     },
     'strapi::poweredBy',
