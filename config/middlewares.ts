@@ -4,16 +4,14 @@ export default [
     {
         name: 'strapi::cors',
         config: {
-            origin: ['localhost:1337', 'strapi.vair.nyte.tk', 'vair.nyte.tk'],
-            methods: [
-                'GET',
-                'POST',
-                'PUT',
-                'PATCH',
-                'DELETE',
-                'HEAD',
-                'OPTIONS',
+            enabled: true,
+            origin: [
+                'http://0.0.0.0:1337',
+                'http://localhost:1337',
+                'https://strapi.vair.nyte.tk',
+                'https://vair.nyte.tk',
             ],
+            methods: ['*'],
             headers: [
                 'Strapi-Transformer-Ignore',
                 'Content-Type',
