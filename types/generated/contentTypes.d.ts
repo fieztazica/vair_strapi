@@ -880,6 +880,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
             'oneToOne',
             'plugin::users-permissions.user'
         >
+        categories: Attribute.Relation<
+            'api::product.product',
+            'oneToMany',
+            'api::category.category'
+        >
         createdAt: Attribute.DateTime
         updatedAt: Attribute.DateTime
         publishedAt: Attribute.DateTime
