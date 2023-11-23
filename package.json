@@ -21,7 +21,6 @@
         "react": "^18.0.0",
         "react-dom": "^18.0.0",
         "react-router-dom": "^5.2.0",
-        "strapi-plugin-io": "^1.1.5",
         "strapi-plugin-populate-deep": "^3.0.1",
         "strapi-plugin-transformer": "^3.1.2",
         "styled-components": "^5.2.1"

@@ -13,6 +13,10 @@ export default ({ env }) => ({
                 mode: 'allow',
                 uids: {
                     'api::product.product': true,
+                    'api::publisher.publisher': true,
+                    'api::developer.developer': true,
+                    'api::feedback.feedback': true,
+                    'api::bought.bought': true,
                     'api::category.category': true,
                 },
             },
@@ -23,28 +27,6 @@ export default ({ env }) => ({
             },
         },
     },
-    // 'rest-cache': {
-    //     config: {
-    //         provider: {
-    //             name: 'memory',
-    //             options: {
-    //                 max: 32767,
-    //                 maxAge: 3600,
-    //             },
-    //         },
-    //         strategy: {
-    //             contentTypes: [
-    //                 // list of Content-Types UID to cache
-    //                 'api::developer.developer',
-    //                 'api::publisher.publisher',
-    //                 'api::category.category',
-    //                 'api::product.product',
-    //                 'api::feedback.feedback',
-    //                 'api::bought.bought',
-    //             ],
-    //         },
-    //     },
-    // },
     upload: {
         config: {
             providerOptions: {
@@ -58,27 +40,6 @@ export default ({ env }) => ({
     'strapi-plugin-populate-deep': {
         config: {
             defaultDepth: 3, // Default is 5
-        },
-    },
-    io: {
-        enabled: true,
-        config: {
-            IOServerOptions: {
-                cors: { origin: 'http://localhost:5000', methods: ['GET'] },
-            },
-            contentTypes: {
-                bought: '*',
-            },
-            events: [
-                {
-                    name: 'connection',
-                    handler: ({ strapi }, socket) => {
-                        strapi.log.info(
-                            `[io] new connection with id ${socket.id}`
-                        )
-                    },
-                },
-            ],
         },
     },
 })
