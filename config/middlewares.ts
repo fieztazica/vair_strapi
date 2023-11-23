@@ -8,6 +8,7 @@ export default [
                 'http://0.0.0.0:1337',
                 'http://localhost:1337',
                 'https://strapi.vair.nyte.tk',
+                'https://express.vair.nyte.tk',
                 'https://vair.nyte.tk',
             ],
             methods: ['*'],
