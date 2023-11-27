@@ -61,6 +61,22 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::category.category"
+    },
+    "downloadUrl": {
+      "type": "string"
+    },
+    "developer": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::developer.developer"
+    },
+    "publisher": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::publisher.publisher"
+    },
+    "downloadCount": {
+      "type": "biginteger"
     }
   }
 }

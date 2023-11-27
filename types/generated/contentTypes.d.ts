@@ -885,6 +885,18 @@ export interface ApiProductProduct extends Schema.CollectionType {
             'oneToMany',
             'api::category.category'
         >
+        downloadUrl: Attribute.String
+        developer: Attribute.Relation<
+            'api::product.product',
+            'oneToOne',
+            'api::developer.developer'
+        >
+        publisher: Attribute.Relation<
+            'api::product.product',
+            'oneToOne',
+            'api::publisher.publisher'
+        >
+        downloadCount: Attribute.BigInteger
         createdAt: Attribute.DateTime
         updatedAt: Attribute.DateTime
         publishedAt: Attribute.DateTime
