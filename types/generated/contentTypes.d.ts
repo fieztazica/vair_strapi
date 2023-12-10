@@ -897,6 +897,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
             'api::publisher.publisher'
         >
         downloadCount: Attribute.BigInteger
+        android_package_name: Attribute.String
         createdAt: Attribute.DateTime
         updatedAt: Attribute.DateTime
         publishedAt: Attribute.DateTime
