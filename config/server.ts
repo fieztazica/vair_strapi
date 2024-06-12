@@ -8,4 +8,5 @@ export default ({ env }) => ({
         populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
     },
     url: env('URL', 'https://strapi.vair.nyte.tk'),
+    proxy: env.bool('IS_PROXIED', true),
 })
